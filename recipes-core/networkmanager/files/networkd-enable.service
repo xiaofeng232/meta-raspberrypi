@@ -1,0 +1,11 @@
+[Unit]
+Description=Enable systemd-networkd
+Before=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl enable systemd-networkd
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

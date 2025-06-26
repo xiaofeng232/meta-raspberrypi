@@ -10,18 +10,18 @@ repos:
   meta-raspberry:
 
   poky:
-    url: https://git.yoctoproject.org/git/poky
+    url: https://github.com/xiaofeng232/poky.git
     path: layers/poky
-    refspec: master
+    refspec: scarthgap
     layers:
       meta:
       meta-poky:
       meta-yocto-bsp:
 
   meta-openembedded:
-    url: http://git.openembedded.org/meta-openembedded
+    url: https://github.com/xiaofeng232/meta-openembedded
     path: layers/meta-openembedded
-    refspec: master
+    refspec: scarthgap
     layers:
       meta-oe:
       meta-python:
@@ -29,9 +29,14 @@ repos:
       meta-perl:
 
   meta-qt5:
-    url: https://github.com/meta-qt5/meta-qt5/
+    url: https://github.com/xiaofeng232/meta-qt5/
     path: layers/meta-qt5
-    refspec: master
+    refspec: scarthgap
+
+  meta-swupdate:
+    url: https://github.com/xiaofeng232/meta-swupdate
+    path: layers/meta-swupdate
+    refspec: scarthgap
 
 bblayers_conf_header:
   standard: |
@@ -47,6 +52,11 @@ local_conf_header:
     SDKMACHINE = "x86_64"
     USER_CLASSES = "buildstats"
     PATCHRESOLVE = "noop"
+    RPI_USE_U_BOOT = "1"
+    IMAGE_FSTYPES = "rpi-sdimg ext4.gz"
+    PREFERRED_PROVIDER_u-boot-fw-utils = "libubootenv"
+  raspberrypi-licenses:
+    LICENSE_FLAGS_ACCEPTED += "synaptics-killswitch"
   debug-tweaks: |
     EXTRA_IMAGE_FEATURES = "debug-tweaks"
   diskmon: |
