@@ -12,6 +12,15 @@ $(TARGET): helloworld.c
 clean:
 	rm -f $(TARGET)
 
+python do_build() {
+	
+	bb.plain("********************");
+    bb.plain("*                  *");
+    bb.plain("*  Hello, World!   *");
+    bb.plain("*                  *");
+    bb.plain("********************");
+}
+
 install: $(TARGET)
 	install -d $(DESTDIR)$(bindir)
 	install -m 0755 $(TARGET) $(DESTDIR)$(bindir)
